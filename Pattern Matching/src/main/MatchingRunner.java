@@ -11,31 +11,32 @@ public class MatchingRunner {
 		AlgorithmsInf kmp = new KMPAlgorithm();
 		AlgorithmsInf bf = new BruteForceAlgorithm();
 		AlgorithmsInf rk = new RabinKarpAlgorithm();
-		
+		long start,end,execution;
+		String[] texts = {"This is a test text", "BESTINAAABAAAABTHEWORLD", "AAAAAAAAAAAAAAAAAB"};
+		String[] patterns = {"test", "AAAAB", "AAAACB"};
 		// #1 test case.
-		System.out.println("Test case #1:");
-		String text = "This is a test text";
-		String pattern = "test";
-		System.out.println("Knuth-Morris-Pratt algorithm answer is " + kmp.solve(pattern, text));
-		System.out.println("Rabin-Karp algorithm answer is " + rk.solve(pattern, text));
-		System.out.println("Brute Force algorithm answer is " + bf.solve(pattern, text));
-		
-		// #2 test case.
-		System.out.println("Test case #2:");
-		text = "AAAAAAAAAAAAAAAAAB";
-		pattern = "AAAAB";
-		System.out.println("Knuth-Morris-Pratt algorithm answer is " + kmp.solve(pattern, text));
-		System.out.println("Rabin-Karp algorithm answer is " + rk.solve(pattern, text));
-		System.out.println("Brute Force algorithm answer is " + bf.solve(pattern, text));
-		
-		// #3 test case.
-		System.out.println("Test case #3:");
-		text = "AAAAAAAAAAAAAAAAAB";
-		pattern = "AAAACB";
-		System.out.println("Knuth-Morris-Pratt algorithm answer is " + kmp.solve(pattern, text));
-		System.out.println("Rabin-Karp algorithm answer is " + rk.solve(pattern, text));
-		System.out.println("Brute Force algorithm answer is " + bf.solve(pattern, text));
-		
+		for(int i = 0; i < 3; i++) {
+			System.out.println("Test case #"+ (i+1) + ":");
+			// get the start time
+	    	start = System.nanoTime();
+			System.out.println("Knuth-Morris-Pratt algorithm answer is " + kmp.solve(patterns[i], texts[i]));
+			// get the end time
+	    	end = System.nanoTime();
+        	// execution time
+	    	execution = end - start;
+	    	System.out.println("Execution time of KMP algorithm: " + execution + " nanoseconds");
+	    	start = System.nanoTime();
+			System.out.println("Rabin-Karp algorithm answer is " + rk.solve(patterns[i], texts[i]));
+			end = System.nanoTime();
+			execution = end - start;
+	    	System.out.println("Execution time of Rabin-Karp algorithm: " + execution + " nanoseconds");
+	    	start = System.nanoTime();
+			System.out.println("Brute Force algorithm answer is " + bf.solve(patterns[i], texts[i]));
+			end = System.nanoTime();
+			execution = end - start;
+	    	System.out.println("Execution time of Brute force algorithm: " + execution + " nanoseconds");
+	    	System.out.print("\n\n");
+		}
 		
 	}
 

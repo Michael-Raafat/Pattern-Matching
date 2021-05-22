@@ -34,9 +34,7 @@ public class RabinKarpAlgorithm implements AlgorithmsInf {
             
             if ( p == t ) {
             	boolean match = true;
-            	// If the hash values match then only check for characters one by one
-                for (j = 0; j < m; j++)
-                {
+            	for (j = 0; j < m; j++){
                     if (text.charAt(i+j) != pattern.charAt(j))
                         match = false;
                 }
